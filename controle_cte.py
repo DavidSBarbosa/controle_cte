@@ -1,6 +1,9 @@
+from itertools import count
+from operator import index
 import pandas as pd
 from xml.dom import minidom
 from tkinter.filedialog import askopenfilenames
+from datetime import datetime
 
 EmD = []
 NumNF = []
@@ -27,6 +30,11 @@ for actual_xml in cte_path:
     ClientName.append(client_name[2].firstChild.data)
     DeliveryCity.append(delivery_city[2].firstChild.data)
     CteValue.append(cte_value[0].firstChild.data)
+
+for pos, each_date in enumerate(EmD):
+    emission_date = datetime.fromisoformat(each_date)
+    formatted_emission_date = f'{emission_date.day}/{emission_date.month:02d}/{emission_date.year} às {emission_date.hour}:{emission_date.minute:02d}'
+    EmD[pos] = formatted_emission_date
 
 cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, CteValue)), columns=['Data Emissao', 'Numero NF', 'Numero CTE', 'Nome Cliente', 'Cidade Entrega', 'Valor CTE'])
 cte_df.index += 1
