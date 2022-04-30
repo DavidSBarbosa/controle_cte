@@ -34,6 +34,10 @@ for pos, each_date in enumerate(EmD):
     formatted_emission_date = f'{emission_date.day}/{emission_date.month:02d}/{emission_date.year}'
     EmD[pos] = formatted_emission_date
 
+for pos, each_numNf in enumerate(NumNF):
+    each_numNf = each_numNf[28:34]
+    NumNF[pos] = each_numNf
+
 cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, CteValue)), columns=['Data Emissao', 'Numero NF', 'Numero CTE', 'Nome Cliente', 'Cidade Entrega', 'Valor CTE'])
 
 CteValueSum = list(map(float, CteValue))
