@@ -10,7 +10,7 @@ ClientName = []
 DeliveryCity = []
 CteValue = []
 
-cte_path = askopenfilenames()
+cte_path = askopenfilenames(filetypes=[("Text files", ".xml")])
 
 for actual_xml in cte_path:
     tree = minidom.parse(actual_xml)
