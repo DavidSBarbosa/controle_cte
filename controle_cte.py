@@ -29,4 +29,5 @@ for actual_xml in cte_path:
     CteValue.append(cte_value[0].firstChild.data)
 
 cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, CteValue)), columns=['Data Emissao', 'Numero NF', 'Numero CTE', 'Nome Cliente', 'Cidade Entrega', 'Valor CTE'])
+cte_df.index += 1
 cte_df.to_excel("controle_cte.xlsx")
