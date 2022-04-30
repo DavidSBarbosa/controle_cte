@@ -1,5 +1,3 @@
-from itertools import count
-from operator import index
 import pandas as pd
 from xml.dom import minidom
 from tkinter.filedialog import askopenfilenames
@@ -37,5 +35,10 @@ for pos, each_date in enumerate(EmD):
     EmD[pos] = formatted_emission_date
 
 cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, CteValue)), columns=['Data Emissao', 'Numero NF', 'Numero CTE', 'Nome Cliente', 'Cidade Entrega', 'Valor CTE'])
+
+CteValueSum = list(map(float, CteValue))
+total_cte = sum(CteValueSum)
+cte_df.at[0, 'Valor Total das CTEs'] = total_cte
 cte_df.index += 1
+
 cte_df.to_excel("controle_cte.xlsx")
