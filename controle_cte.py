@@ -31,7 +31,7 @@ for actual_xml in cte_path:
 
 for pos, each_date in enumerate(EmD):
     emission_date = datetime.fromisoformat(each_date)
-    formatted_emission_date = f'{emission_date.day}/{emission_date.month:02d}/{emission_date.year} às {emission_date.hour}:{emission_date.minute:02d}'
+    formatted_emission_date = f'{emission_date.day}/{emission_date.month:02d}/{emission_date.year}'
     EmD[pos] = formatted_emission_date
 
 cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, CteValue)), columns=['Data Emissao', 'Numero NF', 'Numero CTE', 'Nome Cliente', 'Cidade Entrega', 'Valor CTE'])
