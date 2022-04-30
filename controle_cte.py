@@ -42,7 +42,10 @@ cte_df = pd.DataFrame(list(zip(EmD, NumNF, NumCTE, ClientName, DeliveryCity, Cte
 
 CteValueSum = list(map(float, CteValue))
 total_cte = sum(CteValueSum)
-cte_df.at[0, 'Valor Total das CTEs'] = total_cte
+total_cte = str(total_cte)
+cte_df.loc[len(cte_df.index)] = ['-', '-', '-', '-', '-', total_cte + '0']
 cte_df.index += 1
+
+cte_df = cte_df.rename(index={len(cte_df.index):'TOTAL'})
 
 cte_df.to_excel("controle_cte.xlsx")
